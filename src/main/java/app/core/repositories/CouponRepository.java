@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import app.core.entities.Coupon;
 import app.core.entities.Coupon.Category;
@@ -12,7 +14,7 @@ import app.core.entities.Coupon.Category;
 @Transactional
 public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
-	void deleteByCompanyId(int id);
+	void deleteByCompanyId(int companyId);
 
 	List<Coupon> findByCompanyId(int companyId);
 
@@ -22,18 +24,17 @@ public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
 	Coupon findFirstById(int id);
 
-	List<Coupon> findByCategory(Category category);
+	Page<Coupon> findByCategory(Category category, Pageable pageable);
 
 	List<Coupon> findByCompanyIdAndPriceLessThanEqual(int companyId, double maxPrice);
 
-	//boolean existsByIdAndCustomerId(int id, int customerId);
 	boolean existsByIdAndCustomersId(int id, int customerId);
 	
 	List<Coupon> findByCustomersIdAndPriceLessThanEqual(int customerId, double maxPrice);
 
-//	List<Coupon> findByEndDateBefore(LocalDate now);
-
 	void deleteByEndDateBefore(LocalDate now);
 
 	List<Coupon> findByCustomersIdAndCategory(int customerId, Category category);
+
+	List<Coupon> findByCompanyIdAndCategory(int companyId, Category category);
 }

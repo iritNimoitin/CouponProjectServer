@@ -8,9 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import app.core.exceptions.CouponSystemException;
 import app.core.filters.LoginFilter;
-import app.core.services.CompanyService;
 import app.core.sessions.SessionContext;
 import app.core.tests.Test;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -25,8 +23,6 @@ public class SpringJpaDataLesson71Application {
 		ConfigurableApplicationContext ctx = SpringApplication.run(SpringJpaDataLesson71Application.class, args);
 		Test t = ctx.getBean(Test.class);
 		t.testAll();
-//		CompanyService company = ctx.getBean(CompanyService.class);
-//		company.getCompanyCoupons();
 	}
 	
 	@Bean

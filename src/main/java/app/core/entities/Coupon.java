@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "coupons")
 public class Coupon {
@@ -24,6 +26,7 @@ public class Coupon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@JsonIgnore
 	@ManyToOne
 	private Company company;
 	@Enumerated(EnumType.STRING)
@@ -40,7 +43,7 @@ public class Coupon {
 	private List<Customer> customers;
 	
 	public enum Category {
-		Food, Electricity, Restaurant, Vacation, Sport, Furnitures, Clothing, Attractions;
+		Spa, Electricity, Restaurant, Vacation, Sport, Furniture, Attractions;
 	}
 	
 	public Coupon() {

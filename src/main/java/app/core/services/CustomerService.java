@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import app.core.entities.Coupon;
@@ -96,7 +97,7 @@ public class CustomerService extends ClientService {
 	}
 	
 	public List<Coupon> getCouponsByCategory(Category category) {
-		return couponRepository.findByCategory(category);
+		return couponRepository.findByCustomersIdAndCategory(customerId, category);
 	}
 	
 	public Coupon getCouponByTitle(String title) throws CouponSystemException {

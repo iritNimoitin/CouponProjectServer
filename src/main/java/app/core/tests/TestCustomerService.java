@@ -60,7 +60,7 @@ public class TestCustomerService {
 		}
 		System.out.println("getCustomerCoupons succeeded");
 		List<Coupon> customerCouponsByCategory = null;
-		Category category = Category.Food;
+		Category category = Category.Spa;
 		customerCouponsByCategory = customerService.getCustomerCoupons(category);
 		System.out.println("\ncustomer coupons by category: " + category.toString());
 		for(Coupon c: customerCouponsByCategory) {

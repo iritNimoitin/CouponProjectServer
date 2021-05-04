@@ -107,7 +107,7 @@ public class CompanyService extends ClientService {
 	}
 	
 	public List<Coupon> getCompanyCoupons(Category category) {
-		return couponRepository.findByCategory(category);
+		return couponRepository.findByCompanyIdAndCategory(this.company.getId(), category);
 	}
 	
 	public List<Coupon> getCompanyCoupons(double maxPrice) {

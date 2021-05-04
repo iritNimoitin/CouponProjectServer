@@ -46,6 +46,11 @@ public class Test {
 				System.out.println("\n--------------------company3 was able to login successfully--------------------");
 				companyTest.initializeCoupons2((CompanyService) service);
 			}
+			service = loginManager.login("company4@gmail.com", "pass4", ClientType.valueOf("Company"));
+			if(service instanceof CompanyService) {
+				System.out.println("\n--------------------company4 was able to login successfully--------------------");
+				companyTest.initializeCoupons3((CompanyService) service);
+			}
 			service = loginManager.login("customer2@gmail.com", "pass2", ClientType.valueOf("Customer"));
 			if(service instanceof CustomerService) {
 				System.out.println("\n--------------------customer2 was able to login successfully--------------------");
