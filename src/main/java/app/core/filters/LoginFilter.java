@@ -29,6 +29,9 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String token = req.getHeader("token");
+		if(token == null) {
+			token = "";
+		}
 		Session session = sessionCtx.getSession(token);
 		if (token != null && session != null) {
 			// if we are here we have a valid session

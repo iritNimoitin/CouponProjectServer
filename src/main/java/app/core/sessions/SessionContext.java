@@ -69,12 +69,9 @@ public class SessionContext {
 	public Session getSession(String token) {//TODO: check if need to throw an exception instead of null
 		Session session = sessions.get(token);
 		if (session != null) {
-			if (!isSessionExpired(session)) {
-				session.resetLastAccessed();
-			} else {
-				removeSession(session);
-				return null;
-			}
+			session.resetLastAccessed();
+		} else {
+			session = createSession();
 		}
 		return session;
 	}
